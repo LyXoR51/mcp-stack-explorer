@@ -56,6 +56,19 @@ docker context use default
 docker info | grep -iE "runtimes|operating system"
 ```
 
+## Quick start
+
+```
+docker compose up -d
+docker compose exec ollama nvidia-smi
+```
+
+The second command must list your GPU. Ollama listens on `127.0.0.1:11434`
+only. Pulling models, checking GPU usage and the API: see
+[docs/ollama.md](docs/ollama.md).
+
+
+
 ## Configuration
 
 Copy `.env.example` to `.env` and adjust the values. Never commit `.env`.
