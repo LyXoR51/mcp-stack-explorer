@@ -1,0 +1,15 @@
+# Secrets (never commit)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+
+# Python / uv
+.venv/
+__pycache__/
+*.py[cod]
+dist/
+*.egg-info/
