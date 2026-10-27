@@ -13,3 +13,5 @@ __pycache__/
 *.py[cod]
 dist/
 *.egg-info/
+test.ipynb
+.ruff_cache
