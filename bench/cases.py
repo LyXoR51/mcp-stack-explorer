@@ -62,7 +62,7 @@ CASE_3C = {
 # so the case does not tell the two apart.
 CASE_4 = {
     "id": "c4_query",
-    "prompt": "Qui sont les deux derniers inscrits ?",
+    "prompt": "Qui sont les deux derniers inscrits dans clientele?",
     "expected_tools": {"query_rows"},
     "expected_args": {"table": "clientele", "limit": 2, "order": "desc"},
 }
