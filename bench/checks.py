@@ -18,8 +18,13 @@ def check(message: dict, case: dict, provided_tools: list[str]) -> str | None:
         "wrong_tool", "bad_args".
     """
     tool_calls = message.get("tool_calls") or []
+    content = message.get("content","")
     if not tool_calls:
-        return None if not case["expected_tools"] else "no_call"
+        if '"name"' in str(content) and ('"parameters"' in str(content) or '"arguments"'in str(content)):
+            return "tool_call_in_content"
+        if not case["expected_tools"]:
+            return None
+        return 'no_call'
 
     for tool_call in tool_calls:
         function = tool_call.get("function") or {}
