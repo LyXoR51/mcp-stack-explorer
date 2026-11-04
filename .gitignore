@@ -15,3 +15,5 @@ dist/
 *.egg-info/
 test.ipynb
 .ruff_cache
+scratch/
+results/
