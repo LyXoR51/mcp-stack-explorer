@@ -5,7 +5,8 @@ from pathlib import Path
 
 import httpx
 
-from bench import cases, checks, client, schemas
+from agent import client
+from bench import cases, checks, schemas
 
 BASE_URL = "http://localhost:11434"
 NUM_CTX = 8192
