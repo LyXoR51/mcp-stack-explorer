@@ -1,5 +1,7 @@
 import json
+import argparse
 from collections import Counter, defaultdict
+from statistics import median
 
 from bench import executors
 
@@ -74,8 +76,6 @@ def print_summary(cells: dict, labels: dict) -> None:
         )
 
 
-from statistics import median
-
 def latency_table(rows):
     groups = defaultdict(list)
     for r in rows:
@@ -84,6 +84,19 @@ def latency_table(rows):
     for key, values in sorted(groups.items()):
         print(key, f"median {median(values):.2f}s  n={len(values)}")
 
-rows = load_rows("results/bench_20261102_001142.jsonl")
-print_summary(*summarize(rows))
-latency_table(rows)
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--file",
+        type=str,
+        help="replay bench/results/xxx.jsonl",
+        )
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = parse_args()
+    rows = load_rows(args.file)
+    print_summary(*summarize(rows))
+    latency_table(rows)
